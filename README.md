@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name: Bookstore
+# Project Name: Mag Calculator
 
 > Description the project: This project is for Magiciant Calculator. ;)
 
