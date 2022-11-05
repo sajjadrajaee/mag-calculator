@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import calculate from '../logic/calculate';
 import '../style.css';
 import KeyBtn from './Kyes';
-// eslint-disable-next-line react/prefer-stateless-function
-class Calc extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      total: 0,
-      operation: null,
-      next: null,
-    };
-  }
 
-  EventHandler = (element) => {
+const Calc = () => {
+  const [state, setState] = useState({
+    total: null,
+    operation: null,
+    next: null,
+  });
+
+  const EventHandler = (element) => {
     const btnName = element.keyTag;
-    const res = calculate(this.state, btnName);
-    this.setState(res);
+    const res = calculate(state, btnName);
+    setState(res);
   };
 
-  render() {
-    const { total, operation, next } = this.state;
-    return (
+  const { total, operation, next } = state;
+  return (
+    <div className="main">
+      <div className="letsdo">
+        <span>Lets do some math!</span>
+      </div>
       <div className="calculator">
         <div className="input-area">
           <div className="input">
@@ -31,11 +31,11 @@ class Calc extends React.Component {
           </div>
         </div>
         <div className="button-area">
-          <KeyBtn onClickOperation={this.EventHandler} />
+          <KeyBtn onClickOperation={EventHandler} />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Calc;
