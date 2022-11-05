@@ -12,8 +12,8 @@ root.render(
     <Router>
       <Navbar />
       <Routes>
-        <Route path="about" element={<Home />} />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Home />} />
+        <Route path="calculator" element={<App />} />
         <Route path="quote" element={<Quote />} />
 
       </Routes>

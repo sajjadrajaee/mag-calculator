@@ -18,16 +18,21 @@ const Calc = () => {
 
   const { total, operation, next } = state;
   return (
-    <div className="calculator">
-      <div className="input-area">
-        <div className="input">
-          {total}
-          {operation}
-          {next}
-        </div>
+    <div className="main">
+      <div className="letsdo">
+        <span>Lets do some math!</span>
       </div>
-      <div className="button-area">
-        <KeyBtn onClickOperation={EventHandler} />
+      <div className="calculator">
+        <div className="input-area">
+          <div className="input">
+            {total}
+            {operation}
+            {next}
+          </div>
+        </div>
+        <div className="button-area">
+          <KeyBtn onClickOperation={EventHandler} />
+        </div>
       </div>
     </div>
   );

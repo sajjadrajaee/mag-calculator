@@ -1,9 +1,22 @@
+.main {
+  display: flex;
+  align-items: left;
+}
 .calculator {
+  display: flex;
   background-color: aquamarine;
   width: 25%;
   margin-left: auto;
+  margin-right: 200px;
+  margin-top: 150px;
+}
+
+.letsdo {
+  width: 50%;
+  margin-left: 200px;
   margin-right: auto;
-  margin-top: 200px;
+  margin-top: 150px;
+  font-size: 40px;
 }
 
 .button {
