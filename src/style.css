@@ -3,7 +3,7 @@
 }
 
 .calculator {
-  display: flex;
+  /* display: flex; */
   background-color: aquamarine;
   width: 25%;
   margin-left: auto;
