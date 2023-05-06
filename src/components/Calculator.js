@@ -1,47 +1,61 @@
-import React from 'react';
-import '../style.css';
-// eslint-disable-next-line react/prefer-stateless-function
-class Calc extends React.Component {
-  render() {
-    return (
-      <div className="calculator">
-        <div className="input-area">
-          <input type="text" className="input" placeholder="0" />
+import React, { useState } from 'react';
+import './Calculator.css';
+import calculate from './logic/calculate';
+import Quote from './quote';
+
+const MyCulc = () => {
+  const [state, updateState] = useState({
+    total: null,
+    next: null,
+    operation: null,
+  });
+  const calc = (e) => {
+    const newState = calculate(state, e.target.textContent);
+    updateState(newState);
+  };
+  return (
+    <main>
+      <div className="container">
+        <div className="input-data">
+          <InputData data={state} />
         </div>
-        <div className="button-area">
-          <div className="first-row">
-            <button type="button" className="button">AC</button>
-            <button type="button" className="button">+/-</button>
-            <button type="button" className="button">%</button>
-            <button type="button" className="button-symbol">÷</button>
+        <div className="buttons">
+          <div className="left-side">
+            <button type="button" className="ac" onClick={calc}>AC</button>
+            <button type="button" onClick={calc} className="plusOrMinus">+/-</button>
+            <button type="button" onClick={calc} className="modelus">%</button>
+            <button type="button" onClick={calc} className="seven">7</button>
+            <button type="button" onClick={calc} className="eight">8</button>
+            <button type="button" onClick={calc} className="nine">9</button>
+            <button type="button" onClick={calc} className="four">4</button>
+            <button type="button" onClick={calc} className="five">5</button>
+            <button type="button" onClick={calc} className="six">6</button>
+            <button type="button" onClick={calc} className="1">1</button>
+            <button type="button" onClick={calc} className="two">2</button>
+            <button type="button" onClick={calc} className="three">3</button>
+            <button type="button" onClick={calc} className="zero">0</button>
+            <button type="button" onClick={calc} className="dot">.</button>
           </div>
-          <div className="second-row">
-            <button type="button" className="button">7</button>
-            <button type="button" className="button">8</button>
-            <button type="button" className="button">9</button>
-            <button type="button" className="button-symbol">x</button>
-          </div>
-          <div className="third-row">
-            <button type="button" className="button">4</button>
-            <button type="button" className="button">5</button>
-            <button type="button" className="button">6</button>
-            <button type="button" className="button-symbol">-</button>
-          </div>
-          <div className="fourth-row">
-            <button type="button" className="button">1</button>
-            <button type="button" className="button">2</button>
-            <button type="button" className="button">3</button>
-            <button type="button" className="button-symbol">+</button>
-          </div>
-          <div className="fifth-row">
-            <button type="button" className="zero">0</button>
-            <button type="button" className="button">.</button>
-            <button type="button" className="button-symbol">+</button>
+          <div className="right-side">
+            <button type="button" onClick={calc} className="devid">/</button>
+            <button type="button" onClick={calc} className="times">X</button>
+            <button type="button" onClick={calc} className="minus">-</button>
+            <button type="button" onClick={calc} className="plus">+</button>
+            <button type="button" onClick={calc} className="equal">=</button>
           </div>
         </div>
       </div>
+      <Quote />
+    </main>
+  );
+
+  function InputData(props) {
+    const state = props;
+    return (
+      <div className="input-data">
+        <input type="text" name="input-data" value={state.data.next || state.data.total || 0} readOnly disabled />
+      </div>
     );
   }
-}
-
-export default Calc;
+};
+export default MyCulc;
